@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOV Calculator</title>
+    <link rel="stylesheet" href="styles2.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="images/adt-commercial.svg" alt="logo" class="logo" />
+        </div>
+        <a href="" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+            <li><a href="https://salespilot.adt.com">Sales Pilot</a></li>
+            <li><a href="https:jmt.adt.com">JMT</a></li>
+            <li><a href="https:ebsprd.adt.com">Oracle</a></li>
+            <li>
+              <a href="https://adt-pm-labor-calculator.herokuapp.com/"
+                >PM Labor Calculator</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <h2 class="title">Schedule of Values Calculator</h2>
+      <div class="tables-container input-table">
+        <h4 class="table-title">Job Details</h4>
+        <div class="table-row">
+          <p class="table-left">Job Name:</p>
+          <span class="table-right required"
+            ><input type="text" class="input"
+          /></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Job Number:</p>
+          <span class="table-right required"
+            ><input type="text" class="input"
+          /></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Revised Contract Amount:</p>
+          <span class="table-right required"
+            ><input type="text" class="input"
+          /></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Revised Estimated Margin:</p>
+          <span class="table-right required"
+            ><input type="text" class="input"
+          /></span>
+        </div>
+      </div>
+      <div class="tables-container input-table">
+        <h4 class="table-title">Job Expenses</h4>
+        <div class="table-row">
+          <p class="table-left">Subcontractor Expense:</p>
+          <span class="table-right required"
+            ><input type="text" class="input"
+          /></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Labor Expense:</p>
+          <span class="table-right required"
+            ><input type="text" class="input"
+          /></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Material Expense:</p>
+          <span class="table-right required"
+            ><input type="text" class="input"
+          /></span>
+        </div>
+      </div>
+      <div class="tables-container input-table">
+        <h4 class="table-title">Labor Multipliers</h4>
+        <div class="table-row">
+          <p class="table-left">Mobilization:</p>
+          <span class="table-right"
+            ><input type="text" class="input" value="25"
+          /></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Prewire:</p>
+          <span class="table-right"
+            ><input type="text" class="input" value="30"
+          /></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Trim-Out:</p>
+          <span class="table-right"
+            ><input type="text" class="input" value="35"
+          /></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Programming-Testing:</p>
+          <span class="table-right"
+            ><input type="text" class="input" value="5"
+          /></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Commissioning-Training:</p>
+          <span class="table-right"
+            ><input type="text" class="input" value="5"
+          /></span>
+        </div>
+      </div>
+      <button class="calc-sov">Calculate SOV</button>
+      <div id="sov-table" class="tables-container inactive">
+        <h4 class="table-title">Schedule of Values</h4>
+        <div class="table-row">
+          <p class="table-left">Engineering, Drawings, Submittals:</p>
+          <span id="drawings-sov-value" class="table-right sov-values"></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Equipment & Material:</p>
+          <span id="material-sov-value" class="table-right sov-values"></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Mobilization:</p>
+          <span
+            id="mobilization-sov-value"
+            class="table-right sov-values"
+          ></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Prewire:</p>
+          <span id="prewire-sov-value" class="table-right sov-values"></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Trim-Out:</p>
+          <span id="trim-out-sov-value" class="table-right sov-values"></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Programming-Testing:</p>
+          <span
+            id="programming-sov-value"
+            class="table-right sov-values"
+          ></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Inspections-Training:</p>
+          <span id="training-sov-value" class="table-right sov-values"></span>
+        </div>
+        <button class="print">Print SOV</button>
+      </div>
+    </div>
+  </body>
+</html>
