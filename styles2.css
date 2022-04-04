@@ -84,7 +84,7 @@ body {
   margin: 2rem;
 }
 
-.input {
+input {
   width: 80%;
   background-color: rgba(144, 155, 158, 0.479);
   padding: 0.25rem 0.1rem;
@@ -105,15 +105,15 @@ body {
 
 .sov-values {
   width: 20%;
-  height: 1rem;
+  height: 3rem;
   background-color: rgba(144, 155, 158, 0.479);
-  padding: 0.25rem 0.1rem;
+  padding: 1rem 0.1rem;
   margin: 0.3rem auto;
   display: block;
   border: 1px solid var(--alice-blue);
   border-radius: 6px;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 1rem;
   color: var(--white);
 }
 
