@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOV Calculator</title>
-
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -33,181 +33,139 @@
         </div>
       </nav>
       <h2 class="title">Schedule of Values Calculator</h2>
-      <!-- % Start Job Details Table -->
-      <div class="tables-container">
-        <div class="page-left">
-          <div class="details-table">
-            <h4 class="details-table-title">Job Details</h4>
-            <div class="table-row">
-              <p class="details-table-left">Job Name:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="details-table-left">Job Number:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="details-table-left">Revised Contract Amount:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="details-table-left">Revised Estimated Margin:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
+      <div class="input-tables">
+        <div class="tables-container details-table input-table">
+          <h4 class="table-title">Job Details</h4>
+          <div class="table-row">
+            <p class="table-left">Job Name:</p>
+            <span class="table-right required"
+              ><input type="text" class="input-job-name"
+            /></span>
           </div>
-          <!-- % Start Multipliers Table -->
-          <div class="multipliers-table">
-            <h4 class="details-table-title">Labor Multipliers</h4>
-            <div class="table-row">
-              <p class="multipliers-table-left">Mobilization Multiplier:</p>
-              <span class="multipliers-table-right"
-                ><input type="text" class="input" value="25" />
-              </span>
-            </div>
-            <div class="table-row">
-              <p class="multipliers-table-left">Prewire Multiplier:</p>
-              <span class="multipliers-table-right"
-                ><input type="text" class="input" value="25"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="multipliers-table-left">Trim-Out Multiplier:</p>
-              <span class="multipliers-table-right"
-                ><input type="text" class="input" value="40"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="multipliers-table-left">
-                Programming and Testing Multiplier:
-              </p>
-              <span class="multipliers-table-right"
-                ><input type="text" class="input" value="5"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="multipliers-table-left">
-                Commissioning and Customer Training Multiplier:
-              </p>
-              <span class="multipliers-table-right"
-                ><input type="text" class="input" value="5"
-              /></span>
-            </div>
-
-            <p class="note">
-              Values above are percentages of how the labor is expected to be
-              allocated. There sum should therefore equal 100%.
-            </p>
+          <div class="table-row">
+            <p class="table-left">Job Number:</p>
+            <span class="table-right required"
+              ><input type="text" class="input-job-number"
+            /></span>
+          </div>
+          <div class="table-row">
+            <p class="table-left">Revised Contract Amount:</p>
+            <span class="table-right required"
+              ><input type="text" class="input-contract-amount"
+            /></span>
+          </div>
+          <div class="table-row">
+            <p class="table-left">Revised Estimated Margin:</p>
+            <span class="table-right required"
+              ><input type="text" class="input-margin"
+            /></span>
           </div>
         </div>
-        <!-- % Start Expenses Tables -->
-        <div class="page-right">
-          <div class="expenses-table">
-            <h4 class="details-table-title">Subcontractor Expenses</h4>
-            <div class="table-row">
-              <p class="details-table-left">Design/Permitting:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="details-table-left">Subcontractor Labor:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
-            <h4 class="details-table-title">Labor Expenses</h4>
-            <div class="table-row">
-              <p class="details-table-left">Installation - Core:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="details-table-left">Installation - Enterprise:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="details-table-left">Programming:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
-            <div class="table-row">
-              <p class="details-table-left">Project Management:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
-            <h4 class="details-table-title">Material Expenses</h4>
-            <div class="table-row">
-              <p class="details-table-left">Material:</p>
-              <span class="details-table-right"
-                ><input type="text" class="input"
-              /></span>
-            </div>
+        <div class="tables-container expense-table input-table">
+          <h4 class="table-title">Job Expenses</h4>
+          <div class="table-row">
+            <p class="table-left">Subcontractor Expense:</p>
+            <span class="table-right required"
+              ><input type="text" class="input-sub-expense"
+            /></span>
+          </div>
+          <div class="table-row">
+            <p class="table-left">Labor Expense:</p>
+            <span class="table-right required"
+              ><input type="text" class="input-labor-expense"
+            /></span>
+          </div>
+          <div class="table-row">
+            <p class="table-left">Material Expense:</p>
+            <span class="table-right required"
+              ><input type="text" class="input-material-expense"
+            /></span>
           </div>
         </div>
       </div>
-      <div class="sov-table">
-        <h4 class="details-table-title">Schedule of Values</h4>
+      <div class="tables-container input-table">
+        <h4 class="table-title">Labor Multipliers</h4>
         <div class="table-row">
-          <p class="multipliers-table-left">Engineering/Drawing/Submittals:</p>
-          <span class="sov-table-right"
-            ><input type="text" class="input" value="25" />
-          </span>
+          <p class="table-left">Mobilization:</p>
+          <span class="table-right"
+            ><input type="text" class="input-mobilization" value="25"
+          /></span>
         </div>
         <div class="table-row">
-          <p class="multipliers-table-left">System Equipment/Material:</p>
-          <span class="sov-table-right"
-            ><input type="text" class="input" value="25" />
-          </span>
+          <p class="table-left">Prewire:</p>
+          <span class="table-right"
+            ><input type="text" class="input-prewire" value="30"
+          /></span>
         </div>
         <div class="table-row">
-          <p class="multipliers-table-left">Mobilization:</p>
-          <span class="sov-table-right"
-            ><input type="text" class="input" value="25" />
-          </span>
+          <p class="table-left">Trim-Out:</p>
+          <span class="table-right"
+            ><input type="text" class="input-trim-out" value="35"
+          /></span>
         </div>
         <div class="table-row">
-          <p class="multipliers-table-left">Prewire:</p>
-          <span class="sov-table-right"
-            ><input type="text" class="input" value="25" />
-          </span>
+          <p class="table-left">Programming-Testing:</p>
+          <span class="table-right"
+            ><input type="text" class="input-programming" value="5"
+          /></span>
         </div>
         <div class="table-row">
-          <p class="multipliers-table-left">Trim-Out:</p>
-          <span class="sov-table-right"
-            ><input type="text" class="input" value="25" />
-          </span>
-        </div>
-        <div class="table-row">
-          <p class="multipliers-table-left">Programming and Testing:</p>
-          <span class="sov-table-right"
-            ><input type="text" class="input" value="25" />
-          </span>
-        </div>
-        <div class="table-row">
-          <p class="multipliers-table-left">Commissioning and Training:</p>
-          <span class="sov-table-right"
-            ><input type="text" class="input" value="25" />
-          </span>
-        </div>
-        <div class="table-row">
-          <p class="sov-table-total-left">Contract Total:</p>
-          <span class="sov-table-total-right"> $ </span>
+          <p class="table-left">Commissioning-Training:</p>
+          <span class="table-right"
+            ><input type="text" class="input-training" value="5"
+          /></span>
         </div>
       </div>
+      <button class="calc-sov">Calculate SOV</button>
+      <div id="sov-table" class="tables-container inactive">
+        <h4 class="sov-job">Job Name:</h4>
+        <h4 class="sov-job-number">Job Number:</h4>
+        <h4 class="table-title">Schedule of Values</h4>
+        <div class="table-row">
+          <p class="table-left">Engineering, Drawings, Submittals:</p>
+          <span id="drawings-sov-value" class="table-right sov-values"></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Equipment & Material:</p>
+          <span id="material-sov-value" class="table-right sov-values"></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Mobilization:</p>
+          <span
+            id="mobilization-sov-value"
+            class="table-right sov-values"
+          ></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Prewire:</p>
+          <span id="prewire-sov-value" class="table-right sov-values"></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Trim-Out:</p>
+          <span id="trim-out-sov-value" class="table-right sov-values"></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Programming-Testing:</p>
+          <span
+            id="programming-sov-value"
+            class="table-right sov-values"
+          ></span>
+        </div>
+        <div class="table-row">
+          <p class="table-left">Inspections-Training:</p>
+          <span id="training-sov-value" class="table-right sov-values"></span>
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick="createPDF()"
+        id="printButton"
+        class="inactive"
+      >
+        Print SOV
+      </button>
     </div>
-    <script src="script.js"></script>
+    <script src="
+    https://printjs-4de6.kxcdn.com/print.min.js"></script>
   </body>
 </html>

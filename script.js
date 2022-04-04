@@ -2,7 +2,7 @@ const toggleButton = document.querySelector('.toggle-button');
 const navbarLinks = document.querySelector('.navbar-links');
 const sovTable = document.querySelector('#sov-table');
 const calcButton = document.querySelector('.calc-sov');
-const inputTables = document.querySelectorAll('.input-table');
+const inputTable = document.querySelectorAll('.input-table');
 const jobName = document.querySelector('.input-job-name');
 const jobNumber = document.querySelector('.input-job-number');
 const contractAmount = document.querySelector('.input-contract-amount');
@@ -22,6 +22,9 @@ const prewireSOV = document.querySelector('#prewire-sov-value');
 const trimOutSOV = document.querySelector('#trim-out-sov-value');
 const programmingSOV = document.querySelector('#programming-sov-value');
 const trainingSOV = document.querySelector('#training-sov-value');
+const sovJobName = document.querySelector('.sov-job');
+const sovJobNumber = document.querySelector('.sov-job-number');
+const printButton = document.querySelector('#printButton');
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -29,6 +32,14 @@ const formatter = new Intl.NumberFormat('en-US', {
 //% Functions
 const marginMultiplier = (margin) => 1 - margin / 100;
 const weightedExpense = (expense, margin) => expense / marginMultiplier(margin);
+
+function createPDF() {
+  printJS({
+    printable: 'sov-table',
+    type: 'html',
+    css: 'styles.css',
+  });
+}
 
 //%Navbar toggle button event listener
 toggleButton.addEventListener('click', (e) => {
@@ -40,7 +51,8 @@ toggleButton.addEventListener('click', (e) => {
 calcButton.addEventListener('click', (e) => {
   e.preventDefault();
   sovTable.classList.remove('inactive');
-  for (const table of inputTables) {
+  printButton.classList.remove('inactive');
+  for (const table of inputTable) {
     table.classList.add('inactive');
   }
   calcButton.classList.add('inactive');
@@ -60,6 +72,8 @@ calcButton.addEventListener('click', (e) => {
       (weightedSubExpense + weightedLaborExpense + weightedMaterialExpense)) /
     7;
 
+  sovJobName.textContent = jobName.value;
+  sovJobNumber.textContent = `Job #: ${jobNumber.value}`;
   drawingsSOV.textContent = `${formatter.format(
     weightedSubExpense + roundingFixer
   )}`;
@@ -82,3 +96,7 @@ calcButton.addEventListener('click', (e) => {
     weightedLaborExpense * (+trainingMultiplier.value / 100) + roundingFixer
   )}`;
 });
+
+// printButton.addEventListener('click', function () {
+//   createPDF();
+// });
