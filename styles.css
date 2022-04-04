@@ -116,7 +116,7 @@ body {
 .table-left {
   flex: 1 0 40%;
   padding: 0.5rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--font);
 }
