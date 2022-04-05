@@ -180,6 +180,14 @@ input {
   font-weight: 600;
 }
 
+#total-sov-value {
+  background-color: var(--required);
+  color: var(--font);
+  font-size: 1.2rem;
+}
+#total-text {
+  font-size: 1.4rem;
+}
 button {
   margin: auto;
   display: block;

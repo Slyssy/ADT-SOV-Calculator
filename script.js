@@ -24,6 +24,7 @@ const programmingSOV = document.querySelector('#programming-sov-value');
 const trainingSOV = document.querySelector('#training-sov-value');
 const sovJobName = document.querySelector('.sov-job');
 const sovJobNumber = document.querySelector('.sov-job-number');
+const totalSOV = document.querySelector('#total-sov-value');
 const printButton = document.querySelector('#printButton');
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -94,6 +95,20 @@ calcButton.addEventListener('click', (e) => {
   )}`;
   trainingSOV.textContent = `${formatter.format(
     weightedLaborExpense * (+trainingMultiplier.value / 100) + roundingFixer
+  )}`;
+  totalSOV.textContent = `${formatter.format(
+    weightedSubExpense +
+      roundingFixer +
+      (weightedMaterialExpense + roundingFixer) +
+      ((weightedLaborExpense * +mobilizationMultiplier.value) / 100 +
+        roundingFixer) +
+      (weightedLaborExpense * (+prewireMultiplier.value / 100) +
+        roundingFixer) +
+      (weightedLaborExpense * (+trimOutMultiplier.value / 100) +
+        roundingFixer) +
+      (weightedLaborExpense * (+programmingMultiplier.value / 100) +
+        roundingFixer) +
+      (weightedLaborExpense * (+trainingMultiplier.value / 100) + roundingFixer)
   )}`;
 });
 
