@@ -71,15 +71,12 @@ calcButton.addEventListener('click', (e) => {
   );
 
   const roundingFixer =
-    (contractAmount.value -
-      (weightedSubExpense + weightedLaborExpense + weightedMaterialExpense)) /
-    7;
+    (contractAmount.value - (weightedLaborExpense + weightedMaterialExpense)) /
+    6;
 
   sovJobName.textContent = jobName.value;
   sovJobNumber.textContent = `Job #: ${jobNumber.value}`;
-  drawingsSOV.textContent = `${formatter.format(
-    weightedSubExpense + roundingFixer
-  )}`;
+  drawingsSOV.textContent = `${formatter.format(weightedSubExpense)}`;
   materialSOV.textContent = `${formatter.format(
     weightedMaterialExpense + roundingFixer
   )}`;
@@ -100,7 +97,6 @@ calcButton.addEventListener('click', (e) => {
   )}`;
   totalSOV.textContent = `${formatter.format(
     weightedSubExpense +
-      roundingFixer +
       (weightedMaterialExpense + roundingFixer) +
       ((weightedLaborExpense * +mobilizationMultiplier.value) / 100 +
         roundingFixer) +
