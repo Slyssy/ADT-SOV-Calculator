@@ -188,6 +188,15 @@ input {
 #total-text {
   font-size: 1.4rem;
 }
+
+.sov-buttons {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 button {
   margin: auto;
   display: block;

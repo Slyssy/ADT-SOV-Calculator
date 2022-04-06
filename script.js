@@ -25,6 +25,7 @@ const trainingSOV = document.querySelector('#training-sov-value');
 const sovJobName = document.querySelector('.sov-job');
 const sovJobNumber = document.querySelector('.sov-job-number');
 const totalSOV = document.querySelector('#total-sov-value');
+const reviseButton = document.querySelector('#revise-sov');
 const printButton = document.querySelector('#printButton');
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -52,6 +53,7 @@ toggleButton.addEventListener('click', (e) => {
 calcButton.addEventListener('click', (e) => {
   e.preventDefault();
   sovTable.classList.remove('inactive');
+  reviseButton.classList.remove('inactive');
   printButton.classList.remove('inactive');
   for (const table of inputTable) {
     table.classList.add('inactive');
@@ -112,6 +114,19 @@ calcButton.addEventListener('click', (e) => {
   )}`;
 });
 
+reviseButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  sovTable.classList.add('inactive');
+
+  for (const table of inputTable) {
+    table.classList.remove('inactive');
+  }
+
+  calcButton.classList.remove('inactive');
+
+  printButton.classList.add('inactive');
+  reviseButton.classList.add('inactive');
+});
 // printButton.addEventListener('click', function () {
 //   createPDF();
 // });

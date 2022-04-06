@@ -183,14 +183,19 @@
           <span id="total-sov-value" class="table-right sov-values"></span>
         </div>
       </div>
-      <button
-        type="button"
-        onClick="createPDF()"
-        id="printButton"
-        class="inactive"
-      >
-        Print SOV
-      </button>
+      <div class="sov-buttons">
+        <button type="button" id="revise-sov" class="inactive">
+          Revise SOV
+        </button>
+        <button
+          type="button"
+          onClick="createPDF()"
+          id="printButton"
+          class="inactive"
+        >
+          Print SOV
+        </button>
+      </div>
     </div>
     <script src="
     https://printjs-4de6.kxcdn.com/print.min.js"></script>
