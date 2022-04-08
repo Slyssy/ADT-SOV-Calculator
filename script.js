@@ -10,6 +10,7 @@ const margin = document.querySelector('.input-margin');
 const subExpense = document.querySelector('.input-sub-expense');
 const laborExpense = document.querySelector('.input-labor-expense');
 const materialExpense = document.querySelector('.input-material-expense');
+const otherExpense = document.querySelector('.input-other-expense');
 const mobilizationMultiplier = document.querySelector('.input-mobilization');
 const prewireMultiplier = document.querySelector('.input-prewire');
 const trimOutMultiplier = document.querySelector('.input-trim-out');
@@ -61,19 +62,30 @@ calcButton.addEventListener('click', (e) => {
   calcButton.classList.add('inactive');
 
   const weightedSubExpense = weightedExpense(+subExpense.value, +margin.value);
+  console.log(weightedSubExpense);
   const weightedLaborExpense = weightedExpense(
     +laborExpense.value,
     +margin.value
   );
+  console.log(weightedLaborExpense);
   const weightedMaterialExpense = weightedExpense(
     +materialExpense.value,
     +margin.value
   );
+  console.log(weightedMaterialExpense);
+  const weightedOtherExpense = weightedExpense(
+    +otherExpense.value,
+    +margin.value
+  );
+  console.log(weightedOtherExpense);
 
   const roundingFixer =
-    (contractAmount.value - (weightedLaborExpense + weightedMaterialExpense)) /
-    3;
-
+    contractAmount.value -
+    (weightedSubExpense +
+      weightedLaborExpense +
+      weightedMaterialExpense +
+      weightedOtherExpense);
+  console.log(roundingFixer);
   sovJobName.textContent = jobName.value;
   sovJobNumber.textContent = `Job #: ${jobNumber.value}`;
   drawingsSOV.textContent = `${formatter.format(weightedSubExpense)}`;
@@ -81,13 +93,14 @@ calcButton.addEventListener('click', (e) => {
     weightedMaterialExpense + roundingFixer
   )}`;
   mobilizationSOV.textContent = `${formatter.format(
-    (weightedLaborExpense * +mobilizationMultiplier.value) / 100 + roundingFixer
+    weightedLaborExpense * (+mobilizationMultiplier.value / 100)
   )}`;
   prewireSOV.textContent = `${formatter.format(
     weightedLaborExpense * (+prewireMultiplier.value / 100)
   )}`;
   trimOutSOV.textContent = `${formatter.format(
-    weightedLaborExpense * (+trimOutMultiplier.value / 100) + roundingFixer
+    weightedLaborExpense * (+trimOutMultiplier.value / 100) +
+      weightedOtherExpense
   )}`;
   programmingSOV.textContent = `${formatter.format(
     weightedLaborExpense * (+programmingMultiplier.value / 100)
@@ -98,13 +111,12 @@ calcButton.addEventListener('click', (e) => {
   totalSOV.textContent = `${formatter.format(
     weightedSubExpense +
       (weightedMaterialExpense + roundingFixer) +
-      ((weightedLaborExpense * +mobilizationMultiplier.value) / 100 +
-        roundingFixer) +
+      (weightedLaborExpense * +mobilizationMultiplier.value) / 100 +
       weightedLaborExpense * (+prewireMultiplier.value / 100) +
-      (weightedLaborExpense * (+trimOutMultiplier.value / 100) +
-        roundingFixer) +
+      weightedLaborExpense * (+trimOutMultiplier.value / 100) +
       weightedLaborExpense * (+programmingMultiplier.value / 100) +
-      weightedLaborExpense * (+trainingMultiplier.value / 100)
+      weightedLaborExpense * (+trainingMultiplier.value / 100) +
+      weightedOtherExpense
   )}`;
 });
 
