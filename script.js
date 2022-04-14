@@ -16,6 +16,7 @@ const prewireMultiplier = document.querySelector('.input-prewire');
 const trimOutMultiplier = document.querySelector('.input-trim-out');
 const programmingMultiplier = document.querySelector('.input-programming');
 const trainingMultiplier = document.querySelector('.input-training');
+const laborMultiplierNote = document.querySelector('.note');
 const drawingsSOV = document.querySelector('#drawings-sov-value');
 const materialSOV = document.querySelector('#material-sov-value');
 const mobilizationSOV = document.querySelector('#mobilization-sov-value');
@@ -60,6 +61,7 @@ calcButton.addEventListener('click', (e) => {
     table.classList.add('inactive');
   }
   calcButton.classList.add('inactive');
+  laborMultiplierNote.classList.add('inactive');
 
   const weightedSubExpense = weightedExpense(+subExpense.value, +margin.value);
   console.log(weightedSubExpense);
@@ -129,6 +131,7 @@ reviseButton.addEventListener('click', (e) => {
   }
 
   calcButton.classList.remove('inactive');
+  laborMultiplierNote.classList.remove('inactive');
 
   printButton.classList.add('inactive');
   reviseButton.classList.add('inactive');
