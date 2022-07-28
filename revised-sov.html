@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOV Calculator</title>
+    <link rel="stylesheet" href="./revised-sov.css" />
+    <script src="./revised-sov.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="images/adt-commercial.svg" alt="logo" class="logo" />
+        </div>
+        <a href="" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+            <li><a href="https://salespilot.adt.com">Sales Pilot</a></li>
+            <li><a href="https:jmt.adt.com">JMT</a></li>
+            <li><a href="https:ebsprd.adt.com">Oracle</a></li>
+            <li>
+              <a href="https://adt-pm-labor-calculator.herokuapp.com/"
+                >PM Labor Calculator</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <h1 class="title">Schedule of Values Calculator</h1>
+      <main>
+        <form class="revenue-expense">
+          <h2>Job Revenue and Expense</h2>
+          <!-- <div class="margin">
+            <h4>Margin</h4>
+            <div class="margin-value"></div>
+          </div> -->
+          <label for="contract-amount">Contract Amount</label>
+          <input type="text" id="contract-amount" />
+          <label for="estimated-costs">Estimated Costs</label>
+          <input type="text" id="estimated-costs" />
+          <h5>Cost Category</h5>
+          <h5>Costs</h5>
+          <h5>Margin</h5>
+          <h5>Billable</h5>
+          <h6>Material</h6>
+          <input type="text" id="material-cost" />
+          <div class="margin-results"></div>
+          <div class="billable-results" id="material-bill"></div>
+          <h6>Labor</h6>
+          <input type="text" id="labor-cost" />
+          <div class="margin-results"></div>
+          <div class="billable-results" id="labor-bill"></div>
+          <h6>CAD/Design</h6>
+          <input type="text" id="cad-cost" />
+          <div class="margin-results"></div>
+          <div class="billable-results" id="cad-bill"></div>
+          <h6>Programming</h6>
+          <input type="text" id="programming-cost" />
+          <div class="margin-results"></div>
+          <div class="billable-results" id="programming-bill"></div>
+          <h6>Project Mgmt.</h6>
+          <input type="text" id="pm-cost" />
+          <div class="margin-results"></div>
+          <div class="billable-results" id="pm-bill"></div>
+          <h6>Total</h6>
+          <div class="total-costs"></div>
+          <div class="total-billable"></div>
+          <input type="submit" class="calc-billable"></input>
+        </form>
+        <section class="costs-multipliers">
+          <div class="multipliers">
+            <h4>Material Multipliers</h4>
+            <label for="equipment-procurement">Equipment Procurement</label>
+            <input type="text" id="equipment-procurement" />
+            <label for="equipment-storage">Equipment Receipt/Storage</label>
+            <input type="text" id="equipment-storage" />
+            <h4>Labor Multipliers</h4>
+            <label for="project-setup">Project Setup</label>
+            <input type="text" id="project-setup" />
+            <label for="labor-mobilization">Labor Mobilization</label>
+            <input type="text" id="labor-mobilization" />
+            <label for="prewire">Prewire</label>
+            <input type="text" id="prewire" />
+            <label for="equipment-installation">Equipment Installation</label>
+            <input type="text" id="equipment-installation" />
+            <label for="programming-testing">Programming and Testing</label>
+            <input type="text" id="programming-testing" />
+            <label for="commissioning-training"
+              >Commissioning and Training</label
+            >
+            <input type="text" id="commissioning-training" />
+            <label for="project-closeout">Project Closeout</label>
+            <input type="text" id="project-closeout" />
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
