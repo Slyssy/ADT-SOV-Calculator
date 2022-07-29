@@ -40,14 +40,14 @@
             <h4>Margin</h4>
             <div class="margin-value"></div>
           </div> -->
-          <label for="contract-amount">Contract Amount</label>
-          <input type="text" id="contract-amount" />
-          <label for="estimated-costs">Estimated Costs</label>
+          <label for="estimated-costs">Est. Costs</label>
           <input type="text" id="estimated-costs" />
+          <label for="contract-amount">Contract Amt.</label>
+          <input type="text" id="contract-amount" />
           <h5>Cost Category</h5>
-          <h5>Costs</h5>
-          <h5>Margin</h5>
-          <h5>Billable</h5>
+          <h5 class="costs-title">Costs</h5>
+          <h5 class="margin-title">Margin</h5>
+          <h5 class="billable-title">Billable</h5>
           <h6>Material</h6>
           <input type="text" id="material-cost" />
           <div class="margin-results"></div>
@@ -68,38 +68,43 @@
           <input type="text" id="pm-cost" />
           <div class="margin-results"></div>
           <div class="billable-results" id="pm-bill"></div>
-          <h6>Total</h6>
+          <h6 class="total-title">Total</h6>
           <div class="total-costs"></div>
+          <div class="total-margin"></div>
           <div class="total-billable"></div>
-          <input type="submit" class="calc-billable"></input>
+          <input type="submit" class="calc-billable" value="Calculate Billable"></input>
         </form>
         <section class="costs-multipliers">
           <div class="multipliers">
             <h4>Material Multipliers</h4>
             <label for="equipment-procurement">Equipment Procurement</label>
-            <input type="text" id="equipment-procurement" />
+            <input type="text" id="equipment-procurement" value="20"/>
             <label for="equipment-storage">Equipment Receipt/Storage</label>
-            <input type="text" id="equipment-storage" />
+            <input type="text" id="equipment-storage" value="80"/>
             <h4>Labor Multipliers</h4>
             <label for="project-setup">Project Setup</label>
-            <input type="text" id="project-setup" />
+            <input type="text" id="project-setup" value="25"/>
             <label for="labor-mobilization">Labor Mobilization</label>
-            <input type="text" id="labor-mobilization" />
+            <input type="text" id="labor-mobilization" value="10"/>
             <label for="prewire">Prewire</label>
-            <input type="text" id="prewire" />
+            <input type="text" id="prewire" value="32"/>
             <label for="equipment-installation">Equipment Installation</label>
-            <input type="text" id="equipment-installation" />
+            <input type="text" id="equipment-installation" value="28"/>
             <label for="programming-testing">Programming and Testing</label>
-            <input type="text" id="programming-testing" />
+            <input type="text" id="programming-testing" value="0"/>
             <label for="commissioning-training"
               >Commissioning and Training</label
             >
-            <input type="text" id="commissioning-training" />
+            <input type="text" id="commissioning-training" value="3"/>
             <label for="project-closeout">Project Closeout</label>
-            <input type="text" id="project-closeout" />
+            <input type="text" id="project-closeout" value="2"/>
           </div>
         </section>
       </main>
+      <div class="calc-sov-container">
+        <input type="submit" class="calc-sov" value="Calculate SOV"></input>
+      </div>
+
     </div>
   </body>
 </html>

@@ -85,20 +85,20 @@ body {
 }
 
 main {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 25%);
   justify-items: center;
 }
 
 .revenue-expense {
-  /* width: 100%; */
-  background-color: pink;
+  /* background-color: pink; */
   grid-column: span 2;
   display: grid;
-  grid-template-columns: repeat(4, 24%);
-  /* grid-template-rows: 4em; */
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: 4em repeat(9, 2.25em);
   align-items: center;
-  gap: 1.25%;
 }
 
 .revenue-expense h2 {
@@ -107,17 +107,122 @@ main {
 }
 
 .revenue-expense label {
+  padding: 0.5em 1.5em 0 0.5em;
+}
+.revenue-expense h5 {
+  background-color: var(--adt-blue);
+  height: 100%;
+  font-size: 17px;
+  color: white;
+  text-align: center;
+  padding-top: 0.5em;
+}
+
+.revenue-expense h6 {
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  background-color: var(--lavender-web);
+}
+.revenue-expense label {
   font-size: 14px;
   font-weight: 700;
 }
 
-.revenue-expense input {
-  width: 70%;
+.costs-title {
+  text-align: center;
+}
+
+.margin-title {
+  text-align: center;
+}
+
+.margin-results {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background-color: darkgray;
+  padding-top: 0.5em;
+  color: white;
+}
+
+.billable-title {
+  text-align: center;
+}
+
+.billable-results {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--honeydew);
+  padding-top: 0.5em;
+  color: rgb(87, 92, 90);
+  font-weight: 600;
+}
+
+input {
   justify-self: center;
+  text-align: center;
+  border: none;
+  height: 100%;
+  width: 100%;
+  background-color: var(--lemon-meringue);
+}
+
+input[type='submit'] {
+  grid-column: 2/4;
+  width: 60%;
+  margin-top: 2em;
+  background-color: var(--adt-blue);
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+input[type='submit']:hover {
+  transform: scale(1.05);
+}
+
+input[type='submit']:active {
+  transform: scale(1);
+}
+
+.total-title {
+  background-color: var(--adt-blue) !important;
+  color: white;
+}
+
+.total-costs {
+  text-align: center;
+  font-weight: 700;
+  background-color: var(--adt-blue);
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.total-margin {
+  background-color: var(--adt-blue);
+  height: 100%;
+  width: 100%;
 }
 
 .total-billable {
   grid-column: 4;
+  text-align: center;
+  background-color: var(--adt-blue);
+  color: white;
+  font-weight: 700;
+  height: 100%;
+  width: 100%;
 }
 
 .costs-multipliers {
@@ -137,6 +242,16 @@ main {
 
 .multipliers h4 {
   grid-column: span 2;
+}
+
+.calc-sov-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.calc-sov {
+  width: auto !important;
+  padding: 1em;
 }
 /* ! Start Mobile CSS Styling */
 @media (max-width: 700px) {
