@@ -48,10 +48,16 @@ const billable = (cost, margin) => {
 
 const calcPercentage = (num1, num2) => {
   const result = num1 * (num2 / 100);
-  console.log(Math.round((result + Number.EPSILON) * 100) / 100);
+  return Math.round((result + Number.EPSILON) * 100) / 100;
+};
+
+const calcPercentageOf = (num1, num2) => {
+  const result = (num1 / num2) * 100;
+  return Math.round((result + Number.EPSILON) * 100) / 100;
 };
 
 // $ Button Event Listeners
+let totalBillableValue;
 calcBillable.addEventListener('click', (event) => {
   event.preventDefault();
 
@@ -102,15 +108,46 @@ calcBillable.addEventListener('click', (event) => {
     +pmCost.value
   ).toFixed(2)}`;
 
-  totalBillable.innerHTML = `$${(
+  totalBillableValue = (
     materialBillable +
     laborBillable +
     cadBillable +
     programmingBillable +
     pmBillable
-  ).toFixed(2)}`;
+  ).toFixed(2);
+
+  totalBillable.innerHTML = `$${totalBillableValue}`;
 });
 
+// #SOV Table Variables
+const sovSetup = document.querySelector('.sov-setup');
+const sovSetupPerc = document.querySelector('.sov-setup-perc');
+const sovEngineering = document.querySelector('.sov-engineering');
+const sovEngineeringPerc = document.querySelector('.sov-engineering-perc');
+const sovSubmittals = document.querySelector('.sov-submittals');
+const sovSubmittalsPerc = document.querySelector('.sov-submittals-perc');
+const sovProcurement = document.querySelector('.sov-procurement');
+const sovProcurementPerc = document.querySelector('.sov-procurement-perc');
+const sovStorage = document.querySelector('.sov-storage');
+const sovStoragePerc = document.querySelector('.sov-storage-perc');
+const sovPM = document.querySelector('.sov-pm');
+const sovPMPerc = document.querySelector('.sov-pm-perc');
+const sovMobilization = document.querySelector('.sov-mobilization');
+const sovMobilizationPerc = document.querySelector('.sov-mobilization-perc');
+const sovPrewire = document.querySelector('.sov-prewire');
+const sovPrewirePerc = document.querySelector('.sov-prewire-perc');
+const sovInstallation = document.querySelector('.sov-installation');
+const sovInstallationPerc = document.querySelector('.sov-installation-perc');
+const sovProgramming = document.querySelector('.sov-programming');
+const sovProgrammingPerc = document.querySelector('.sov-programming-perc');
+const sovCommissioning = document.querySelector('.sov-commissioning');
+const sovCommissioningPerc = document.querySelector('.sov-commissioning-perc');
+const sovCloseout = document.querySelector('.sov-closeout');
+const sovCloseoutPerc = document.querySelector('.sov-closeout-perc');
+const sovTotal = document.querySelector('.sov-total');
+const sovTotalPerc = document.querySelector('.sov-total-perc');
+
+// # Calculate SOV Event Listener
 calcSOV.addEventListener('click', (event) => {
   event.preventDefault();
 
@@ -152,5 +189,149 @@ calcSOV.addEventListener('click', (event) => {
   const billableCloseout = calcPercentage(
     +laborBill.innerHTML.slice(1),
     +closeoutMultiplier.value
+  );
+
+  const sovModal = document.querySelector('#sov-modal');
+  sovModal.innerHTML = '';
+  sovModal.insertAdjacentHTML(
+    'afterbegin',
+    `
+    <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-0lax" colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-ov5x">Cost Category</td>
+        <td class="tg-ov5x">Assigned Value</td>
+        <td class="tg-ov5x">% of Total</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Project Setup/Administration</td>
+        <td class="tg-0lax sov-setup assigned-value">$${billableSetup}</td>
+        <td class="tg-0lax sov-setup-perc percentage">${calcPercentageOf(
+          billableSetup,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Engineering &amp; Design</td>
+        <td class="tg-0lax sov-engineering assigned-value">$${billableDesign}</td>
+        <td class="tg-0lax sov-engineering-perc percentage">${calcPercentageOf(
+          billableDesign,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Submittals</td>
+        <td class="tg-0lax sov-submittals assigned-value">$${billableSubmittals}</td>
+        <td class="tg-0lax sov-submittals-perc percentage">${calcPercentageOf(
+          billableSubmittals,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Equipment Procurement</td>
+        <td class="tg-0lax sov-procurement assigned-value">$${billableProcurement}</td>
+        <td class="tg-0lax sov-procurement-perc percentage">${calcPercentageOf(
+          billableProcurement,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Equipment Receipt &amp; Storage</td>
+        <td class="tg-0lax sov-storage assigned-value">$${billableStorage}</td>
+        <td class="tg-0lax sov-storage-perc percentage">${calcPercentageOf(
+          billableStorage,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Project Management</td>
+        <td class="tg-0lax sov-pm assigned-value">$${billablePM}</td>
+        <td class="tg-0lax sov-pm-perc percentage">${calcPercentageOf(
+          billablePM,
+          totalBillableValue
+        )} %</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Labor Mobilization</td>
+        <td class="tg-0lax sov-mobilization assigned-value">$${billableMobilization}</td>
+        <td class="tg-0lax sov-mobilization-perc percentage">${calcPercentageOf(
+          billableMobilization,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Prewire</td>
+        <td class="tg-0lax sov-prewire assigned-value">$${billablePrewire}</td>
+        <td class="tg-0lax sov-prewire-perc percentage">${calcPercentageOf(
+          billablePrewire,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Equipment Installation</td>
+        <td class="tg-0lax sov-installation assigned-value">$${billableInstallation}</td>
+        <td class="tg-0lax sov-installation-perc percentage">${calcPercentageOf(
+          billableInstallation,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Programming &amp; Testing</td>
+        <td class="tg-0lax sov-programming assigned-value">$${billableProgramming}</td>
+        <td class="tg-0lax sov-programming-perc percentage">${calcPercentageOf(
+          billableProgramming,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Commissioning &amp; Training</td>
+        <td class="tg-0lax sov-commissioning assigned-value">$${billableCommissioning}</td>
+        <td class="tg-0lax sov-commissioning-perc percentage">${calcPercentageOf(
+          billableCommissioning,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      <tr>
+        <td class="tg-1wig">Project Closeout</td>
+        <td class="tg-0lax sov-closeout assigned-value">$${billableCloseout}</td>
+        <td class="tg-0lax sov-closeout-perc percentage">${calcPercentageOf(
+          billableCloseout,
+          totalBillableValue
+        )}%</td>
+      </tr>
+      </tbody>
+      </table>
+  `
+  );
+  const assignedValues = document.getElementsByClassName('assigned-value');
+  console.log(assignedValues);
+  const assignedValueTotal = [...assignedValues]
+    .map((el) => +el.textContent.slice(1))
+    .reduce((acc, cur) => acc + cur);
+
+  const percentages = document.getElementsByClassName('percentage');
+  const percentageTotal = [...percentages]
+    .map((el) => +el.textContent.slice(0, -1))
+    .reduce((acc, cur) => acc + cur);
+
+  sovModal.insertAdjacentHTML(
+    'beforeend',
+    `
+    <table class="tg">
+  <tr>
+        <td class="tg-1wig">Total to be Billed</td>
+        <td class="tg-0lax sov-total">$${assignedValueTotal}</td>
+        <td class="tg-0lax sov-total-perc">${
+          Math.round((percentageTotal + Number.EPSILON) * 100) / 100
+        }%</td>
+      </tr>
+    </tbody>
+    </table>
+  `
   );
 });
