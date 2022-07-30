@@ -35,73 +35,85 @@
       <h1 class="title">Schedule of Values Calculator</h1>
       <main>
         <form class="revenue-expense">
+          <!-- <label for="job-name">Est. Costs</label> -->
           <h2>Job Revenue and Expense</h2>
-          <!-- <div class="margin">
-            <h4>Margin</h4>
-            <div class="margin-value"></div>
-          </div> -->
+          <div class="name-address">
+            <input type="text" id="job-name" placeholder="Enter Job Name"/>
+            <input type="text" id="job-address" placeholder="Enter Street Address"/>
+          </div>
           <label for="estimated-costs">Est. Costs</label>
-          <input type="text" id="estimated-costs" />
+          <input type="text" id="estimated-costs" placeholder="12345.00"/>
           <label for="contract-amount">Contract Amt.</label>
-          <input type="text" id="contract-amount" />
+          <input type="text" id="contract-amount" placeholder="15678.00"/>
           <h5>Cost Category</h5>
           <h5 class="costs-title">Costs</h5>
           <h5 class="margin-title">Margin</h5>
           <h5 class="billable-title">Billable</h5>
           <h6>Material</h6>
-          <input type="text" id="material-cost" />
+          <input type="text" id="material-cost" placeholder="5678.00"/>
           <div class="margin-results"></div>
           <div class="billable-results" id="material-bill"></div>
           <h6>Labor</h6>
-          <input type="text" id="labor-cost" />
+          <input type="text" id="labor-cost" placeholder="1678.00"/>
           <div class="margin-results"></div>
           <div class="billable-results" id="labor-bill"></div>
           <h6>CAD/Design</h6>
-          <input type="text" id="cad-cost" />
+          <input type="text" id="cad-cost" placeholder="678.00"/>
           <div class="margin-results"></div>
           <div class="billable-results" id="cad-bill"></div>
           <h6>Programming</h6>
-          <input type="text" id="programming-cost" />
+          <input type="text" id="programming-cost" placeholder="568.00"/>
           <div class="margin-results"></div>
           <div class="billable-results" id="programming-bill"></div>
           <h6>Project Mgmt.</h6>
-          <input type="text" id="pm-cost" />
+          <input type="text" id="pm-cost" placeholder="2678.00"/>
           <div class="margin-results"></div>
           <div class="billable-results" id="pm-bill"></div>
           <h6 class="total-title">Total</h6>
           <div class="total-costs"></div>
           <div class="total-margin"></div>
           <div class="total-billable"></div>
-          <input type="submit" class="calc-billable" value="Calculate Billable"></input>
+            <p>Fill out all fields with a yellow background.</p>
+            <p>Click on "Calculate Billable" to calculate billable
+            amounts.</p>
+            <p>Click on "Calculate SOV" to calculate the SOV.</p>
+
         </form>
         <section class="costs-multipliers">
           <div class="multipliers">
             <h4>Material Multipliers</h4>
+            <h4>Material %</h4>
             <label for="equipment-procurement">Equipment Procurement</label>
-            <input type="text" id="equipment-procurement" value="20"/>
+            <input type="text" id="equipment-procurement" class="equip-percentage" value="20"/>
             <label for="equipment-storage">Equipment Receipt/Storage</label>
-            <input type="text" id="equipment-storage" value="80"/>
+            <input type="text" id="equipment-storage" class="equip-percentage" value="80"/>
+            <h5> Material % Total</h5>
+            <div class="material-perc-total percent-total"></div>
             <h4>Labor Multipliers</h4>
+            <h4>Labor %</h4>
             <label for="project-setup">Project Setup</label>
-            <input type="text" id="project-setup" value="25"/>
+            <input type="text" id="project-setup" class="labor-percentage" value="25"/>
             <label for="labor-mobilization">Labor Mobilization</label>
-            <input type="text" id="labor-mobilization" value="10"/>
+            <input type="text" id="labor-mobilization" class="labor-percentage" value="10"/>
             <label for="prewire">Prewire</label>
-            <input type="text" id="prewire" value="32"/>
+            <input type="text" id="prewire" class="labor-percentage" value="32"/>
             <label for="equipment-installation">Equipment Installation</label>
-            <input type="text" id="equipment-installation" value="28"/>
+            <input type="text" id="equipment-installation" class="labor-percentage" value="28"/>
             <label for="programming-testing">Programming and Testing</label>
-            <input type="text" id="programming-testing" value="0"/>
+            <input type="text" id="programming-testing" class="labor-percentage" value="0"/>
             <label for="commissioning-training"
               >Commissioning and Training</label
             >
-            <input type="text" id="commissioning-training" value="3"/>
+            <input type="text" id="commissioning-training" class="labor-percentage" value="3"/>
             <label for="project-closeout">Project Closeout</label>
-            <input type="text" id="project-closeout" value="2"/>
+            <input type="text" id="project-closeout" class="labor-percentage" value="2"/>
+            <h5> Labor % Total</h5>
+            <div class="labor-perc-total percent-total"></div>
           </div>
         </section>
       </main>
       <div class="calc-sov-container">
+        <input type="submit" class="calc-billable" value="Calculate Billable"></input>
         <input type="submit" class="calc-sov" value="Calculate SOV"></input>
       </div>
       <div id="sov-modal">

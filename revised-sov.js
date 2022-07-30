@@ -1,6 +1,10 @@
 'use strict';
 // $ Defining CSS Selector Variables
+const title = document.querySelector('h1');
+const main = document.querySelector('main');
 // ? Job Revenue and Expense Table
+const jobName = document.querySelector('#job-name');
+const jobAddress = document.querySelector('#job-address');
 const contractAmount = document.querySelector('#contract-amount');
 const estimatedCosts = document.querySelector('#estimated-costs');
 const materialCost = document.querySelector('#material-cost');
@@ -29,6 +33,10 @@ const installMultiplier = document.querySelector('#equipment-installation');
 const programmingMultiplier = document.querySelector('#programming-testing');
 const trainingMultiplier = document.querySelector('#commissioning-training');
 const closeoutMultiplier = document.querySelector('#project-closeout');
+const equipPercentageInputs = document.querySelectorAll('.equip-percentage');
+const laborPercentageInputs = document.querySelectorAll('.labor-percentage');
+const materialPercentTotal = document.querySelector('.material-perc-total');
+const laborPercentTotal = document.querySelector('.labor-perc-total');
 
 // ? Buttons
 const calcBillable = document.querySelector('.calc-billable');
@@ -53,8 +61,16 @@ const calcPercentage = (num1, num2) => {
 
 const calcPercentageOf = (num1, num2) => {
   const result = (num1 / num2) * 100;
-  return Math.round((result + Number.EPSILON) * 100) / 100;
+  return (Math.round((result + Number.EPSILON) * 100) / 100).toLocaleString();
 };
+
+const calcPercentageTotal = (nodeList) => {
+  let array = Array.from(nodeList).map((el) => +el.value);
+  const percentTotal = array.reduce((acc, cur) => cur + acc);
+  return percentTotal;
+};
+materialPercentTotal.innerHTML = calcPercentageTotal(equipPercentageInputs);
+laborPercentTotal.innerHTML = calcPercentageTotal(laborPercentageInputs);
 
 // $ Button Event Listeners
 let totalBillableValue;
@@ -119,6 +135,26 @@ calcBillable.addEventListener('click', (event) => {
   totalBillable.innerHTML = `$${totalBillableValue}`;
 });
 
+// # Looping throught the equipment percentage multiplier values and calling the calcPercentageTotal to automatically update the Material % Total Field.
+equipPercentageInputs.forEach((input) => {
+  input.addEventListener('input', (event) => {
+    materialPercentTotal.innerHTML = calcPercentageTotal(equipPercentageInputs);
+    if (materialPercentTotal.innerHTML === '100') {
+      materialPercentTotal.setAttribute('style', 'color:green');
+    } else materialPercentTotal.setAttribute('style', 'color:red');
+  });
+});
+
+// # Looping throught the equipment percentage multiplier values and calling the calcPercentageTotal to automatically update the Material % Total Field.
+laborPercentageInputs.forEach((input) => {
+  input.addEventListener('input', (event) => {
+    laborPercentTotal.innerHTML = calcPercentageTotal(laborPercentageInputs);
+    if (laborPercentTotal.innerHTML === '100') {
+      laborPercentTotal.setAttribute('style', 'color:green');
+    } else laborPercentTotal.setAttribute('style', 'color:red');
+  });
+});
+
 // #SOV Table Variables
 const sovSetup = document.querySelector('.sov-setup');
 const sovSetupPerc = document.querySelector('.sov-setup-perc');
@@ -151,6 +187,10 @@ const sovTotalPerc = document.querySelector('.sov-total-perc');
 calcSOV.addEventListener('click', (event) => {
   event.preventDefault();
 
+  main.classList.add('hide');
+  calcBillable.classList.add('hide');
+  calcSOV.classList.add('hide');
+  title.classList.add('hide');
   const billableSetup = calcPercentage(
     +laborBill.innerHTML.slice(1),
     +setupMultiplier.value
@@ -199,7 +239,10 @@ calcSOV.addEventListener('click', (event) => {
     <table class="tg">
     <thead>
       <tr>
-        <th class="tg-0lax" colspan="3"></th>
+        <th class="tg-0lax" colspan="3">${jobName.value}</th>
+      </tr>
+      <tr>
+        <th class="tg-0lax" colspan="3">${jobAddress.value}</th>
       </tr>
     </thead>
     <tbody>
@@ -309,7 +352,6 @@ calcSOV.addEventListener('click', (event) => {
   `
   );
   const assignedValues = document.getElementsByClassName('assigned-value');
-  console.log(assignedValues);
   const assignedValueTotal = [...assignedValues]
     .map((el) => +el.textContent.slice(1))
     .reduce((acc, cur) => acc + cur);
@@ -324,9 +366,9 @@ calcSOV.addEventListener('click', (event) => {
     `
     <table class="tg">
   <tr>
-        <td class="tg-1wig">Total to be Billed</td>
-        <td class="tg-0lax sov-total">$${assignedValueTotal}</td>
-        <td class="tg-0lax sov-total-perc">${
+        <td class="tg-1wig sov-total-row">Total to be Billed</td>
+        <td class="tg-0lax sov-total sov-total-row">$${assignedValueTotal}</td>
+        <td class="tg-0lax sov-total-perc sov-total-row">${
           Math.round((percentageTotal + Number.EPSILON) * 100) / 100
         }%</td>
       </tr>

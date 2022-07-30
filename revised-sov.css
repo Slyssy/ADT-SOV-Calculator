@@ -2,12 +2,15 @@
   --lavender-web: #d9e1f2ff;
   --light-gray: #d0ceceff;
   --adt-blue: #0060aaff;
-  --honeydew: #e2efdaff;
-  --lemon-meringue: #fff2ccff;
-  --text-dark: #191919;
+  --honeydew: #cdf0b7;
+  --lemon-meringue: #ffd65c;
+  --text-dark: #717171;
   --text-bright: #9e2a2b;
 }
 
+.test {
+  color: #cdf0b7;
+}
 .adt-blue {
   color: rgb(0, 96, 170);
 }
@@ -81,6 +84,8 @@ body {
 }
 
 .title {
+  /* width: 1200px; */
+  /* margin: 0 auto; */
   color: var(--text-bright);
   font-size: 2em;
   margin-bottom: 1em;
@@ -89,20 +94,30 @@ body {
 }
 
 main {
-  max-width: 1200px;
+  min-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 25%);
   justify-items: center;
+  gap: 2em;
+  z-index: 1;
+  position: relative;
 }
 
 .revenue-expense {
-  /* background-color: pink; */
+  background-color: rgb(245, 245, 245);
+  padding: 0 2em;
   grid-column: span 2;
   display: grid;
   grid-template-columns: repeat(4, 25%);
-  grid-template-rows: 4em repeat(9, 2.25em);
+  grid-template-rows: 4em auto repeat(11, 2.25em);
   align-items: center;
+  align-content: center;
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  border-radius: 10px;
 }
 
 .revenue-expense h2 {
@@ -110,6 +125,23 @@ main {
   text-align: center;
 }
 
+.name-address {
+  grid-column: span 4;
+  width: 80%;
+  margin: 2em auto;
+}
+#job-name {
+  grid-column: span 4;
+  height: 2em;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
+
+#job-address {
+  grid-column: span 4;
+  height: 2em;
+  border-radius: 5px;
+}
 .revenue-expense label {
   padding: 0.5em 1.5em 0 0.5em;
 }
@@ -135,6 +167,12 @@ main {
   font-weight: 700;
 }
 
+.revenue-expense p {
+  grid-column: span 4;
+  text-align: center;
+  color: var(--text-bright);
+  font-style: italic;
+}
 .costs-title {
   text-align: center;
 }
@@ -167,12 +205,13 @@ main {
 }
 
 input {
-  justify-self: center;
   text-align: center;
   border: none;
   height: 100%;
   width: 100%;
   background-color: var(--lemon-meringue);
+  color: white;
+  font-weight: 600;
 }
 
 input[type='submit'] {
@@ -232,10 +271,16 @@ input[type='submit']:active {
 
 .costs-multipliers {
   width: 100%;
+  background-color: rgb(245, 245, 245);
+  padding: 2em 0;
   grid-column: span 2;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  border-radius: 10px;
 }
 
 .multipliers {
@@ -245,29 +290,56 @@ input[type='submit']:active {
   gap: 1em;
 }
 
+.multipliers input {
+  border-radius: 5px;
+  height: 2em;
+  background-color: var(--lemon-meringue);
+  font-size: 18px;
+}
 .multipliers h4 {
-  grid-column: span 2;
+  background-color: var(--adt-blue);
+  color: white;
+  padding: 0.5em 0;
+  text-align: center;
+  /* border-radius: 5px; */
 }
 
+.multipliers h5 {
+  font-size: 18px;
+  color: var(--text-bright);
+}
+
+.percent-total {
+  width: 100%;
+  height: 100%;
+  background-color: var(--lavender-web);
+  text-align: center;
+  color: green;
+  font-weight: 600;
+  padding: 0.25em;
+}
 .calc-sov-container {
   width: 100%;
   display: flex;
   justify-content: center;
+  gap: 10%;
 }
-.calc-sov {
+input[type='submit'] {
   width: auto !important;
   padding: 1em;
 }
 
 /* ?Table Styling */
-/* #sov-modal {
+#sov-modal {
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   position: fixed;
   top: 250px;
-} */
+}
 .tg {
   border-collapse: collapse;
   border-spacing: 0;
@@ -299,8 +371,13 @@ input[type='submit']:active {
   text-align: left;
   vertical-align: center;
 }
+
+.sov-total-row {
+  background-color: var(--adt-blue);
+  color: #ffffff;
+}
 .tg .tg-ov5x {
-  background-color: #0060aa;
+  background-color: var(--adt-blue);
   color: #ffffff;
   font-weight: bold;
   text-align: center;
@@ -310,11 +387,13 @@ input[type='submit']:active {
   width: 150px;
   text-align: center;
   vertical-align: top;
+  font-weight: 600;
 }
 
-/* tg .tg-0lax .total-sov-title {
-  width: 
-} */
+.hide {
+  display: none;
+}
+
 /* ! Start Mobile CSS Styling */
 @media (max-width: 700px) {
   .logo {
